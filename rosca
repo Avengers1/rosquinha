@@ -1,0 +1,6 @@
+$(document).ready(function(){function t(t){var n=require("app/models/TheUserModel");if(n.getRelationship(t.id)<2){var r=require("app/services/user/UserFanService");r=new r(true,t.id);var i=JSON.parse(localStorage.usData);++i.counter;console.log("Fanned new user: "+t.username+". Total number fanned: "+i.counter);localStorage.usData=JSON.stringify(i);e+=1}}
+function r(){var e,t;t=[" Fan 4 Fan (AutoFan) #back ","Fan 4 Fan (AutoFan) #back "];e=Math.floor(Math.random()*t.length);API.sendChat(t[e])}
+function i(t){switch(t){case"/stopchat":clearInterval(n);API.chatLog("FanBOT CHAT OFFLINE => BOT ONLINE",alert);break;case"/restart":n=setInterval(function(){r()},888899);break;case"/fans?":API.chatLog(e+" Pessoas viraram fan desde iniciado",alert);break;case"/chat":r();break;default:break}}
+function s(){$("#button-vote-positive").click()}
+API.sendChat(" Fan for Fan automatic [ON] - Editado por @Avengers & @HAKUNA MATATA ");$("#button-vote-positive").click();var e=0;if(localStorage.usData===undefined){localStorage.usData=JSON.stringify({counter:0})}
+API.on(API.USER_FAN,t);var n=setInterval(function(){r()},888899);API.on(API.CHAT_COMMAND,i);API.on(API.DJ_ADVANCE,s)})
